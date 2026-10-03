@@ -1,0 +1,44 @@
+Prompt Type: Unstructured (Run 1)
+Model: Gemini 3.5 Flash-Lite
+Date: 2026/10/4
+
+Prompt: 
+Derive the orbital period of a circular orbit at altitude 550 km above Earth’s surface from Newtonian gravity, and evaluate it in minutes.
+
+Response:
+To find the orbital period of a satellite in a circular orbit at an altitude of 550" km" , we can derive the formula using fundamental Newtonian mechanics and universal gravitation.
+## Derivation from Newtonian Gravity
+1. Force Balance
+For a satellite of mass min a circular orbit of radius raround Earth (mass M), the gravitational force supplied by Earth acts as the centripetal force keeping it in orbit:
+GMm/r^2 =(mv^2)/r
+where:
+	Gis the gravitational constant (6.6743×10^(-11) 〖" m" 〗^3 〖" kg" 〗^(-1) 〖" s" 〗^(-2))
+	Mis the mass of the Earth
+	ris the distance from the center of Earth to the satellite
+	vis the orbital velocity
+2. Solving for Orbital Velocity (v)
+Canceling the satellite mass mand one factor of rfrom both sides gives:
+ 
+v=√(GM/r)
+3. Deriving the Orbital Period (T)
+The distance traveled in one complete circular orbit is the circumference 2πr. Since the speed vis constant, the orbital period Tis:
+T=2πr/v
+Substitute the expression for vinto the period equation:
+  
+T=2πr√(r/GM)=2π√(r^3/GM)
+(Note: GM is often written as the standard gravitational parameter, μ≈3.986×10^14 〖" m" 〗^3/"s" ^2.)
+## Numerical Evaluation
+We plug in the known physical values for Earth and the given altitude:
+	Earth's Mean Radius (R_E): 6,371" km" 
+	Altitude (h): 550" km" 
+	Orbital Radius (r=R_E+h): 6,371+550=6,921" km"=6.921×10^6 " m" 
+	Standard Gravitational Parameter (μ): 3.986×10^14 〖" m" 〗^3/"s" ^2
+Substituting these into our derived equation:
+ 
+T=2π√((6.921×10^6 )^3/(3.986×10^14 ))
+T≈5,730.11" seconds" 
+Converting seconds to minutes:
+T=5,730.11/60≈95.50" minutes" 
+## Practical Context
+An orbital period of roughly 95.5 minutes (or about 1.59" hours" ) is a classic characteristic of Low Earth Orbit (LEO) satellites. For example, a 550" km" altitude is famously utilized by SpaceX's Starlink constellation because it provides a good balance: it is high enough to avoid rapid orbital decay from atmospheric drag, yet low enough to ensure low latency and strong signal transmission back to Earth.
+
