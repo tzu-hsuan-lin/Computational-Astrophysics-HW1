@@ -1,0 +1,43 @@
+Prompt Type: Unstructured (Run 3)
+Model: Gemini 3.5 Flash-Lite
+Date: 2026/10/4
+
+Prompt: 
+Derive the orbital period of a circular orbit at altitude 550 km above Earth’s surface from Newtonian gravity, and evaluate it in minutes.
+
+Response:
+To find the orbital period of a satellite in a circular orbit at an altitude of 550" km" , we can start from fundamental principles of Newtonian mechanics and universal gravitation.
+## 1. Derivation of the Orbital Period
+Consider a satellite of mass m orbiting Earth (mass M) in a circular orbit of radius r, where:
+r=R_E+h
+	R_E = Earth's radius
+	h = orbital altitude (550" km" )
+Step 1: Equate Gravitational Force to Centripetal Force
+The gravitational force pulling the satellite toward Earth provides the centripetal force required to keep it moving in a circle:
+GMm/r^2 =(mv^2)/r
+Where:
+	G is the gravitational constant (6.6743×10^(-11) 〖" m" 〗^3 〖"kg" 〗^(-1) "s" ^(-2))
+	v is the orbital velocity
+Canceling the satellite's mass m and one factor of r gives the expression for orbital velocity:
+v=√(GM/r)
+Step 2: Relate Velocity to Orbital Period (T)
+The distance traveled by the satellite in one complete orbit is the circumference of the circle, C=2πr. The orbital period T is the circumference divided by the orbital velocity:
+T=2πr/v
+Substitute the expression for v:
+T=2πr/√(GM/r)=2πr⋅√(r/GM)
+Simplifying this yields Kepler's Third Law for circular orbits:
+T=2π√(r^3/GM)
+## 2. Numerical Evaluation
+Let's plug in the standard physical constants for Earth and the given altitude:
+	Earth's Mean Radius (R_E): 6,371" km"=6.371×10^6 " m" 
+	Altitude (h): 550" km"=5.5×10^5 " m" 
+	Orbital Radius (r): 6,371" km"+550" km"=6,921" km"=6.921×10^6 " m" 
+	Standard Gravitational Parameter (μ=GM): 3.986×10^14 〖" m" 〗^3 "s" ^(-2)
+Calculation in Seconds:
+T=2π√((6.921×10^6 " m" )^3/(3.986×10^14 〖" m" 〗^3 "s" ^(-2) ))
+T≈5,730" seconds" 
+Conversion to Minutes:
+T_"minutes" =5,730" s" /60" s/min" ≈95.5" minutes" 
+## Summary
+A satellite in a circular orbit at a 550" km"  altitude (commonly used for Earth-observation and constellations like Starlink) completes one full orbit approximately every 95.5 minutes (or about 1 hour and 35.5 minutes).
+
