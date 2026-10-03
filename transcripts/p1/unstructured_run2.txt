@@ -1,0 +1,61 @@
+Prompt Type: Unstructured (Run 2)
+Model: Gemini 3.5 Flash-Lite
+Date: 2026/10/4
+
+Prompt: 
+Derive the orbital period of a circular orbit at altitude 550 km above Earth’s surface from Newtonian gravity, and evaluate it in minutes.
+
+Response:
+To find the orbital period of a satellite in a circular orbit at an altitude of 550 km, we start from Newton's law of universal gravitation and Newton's second law of motion.
+
+
+1. Derivation of the Orbital Period
+For a satellite of mass m orbiting a planet of mass M (Earth) at a distance r from the center of the planet, the only force acting on the satellite in a circular orbit is the gravitational pull.
+
+Equating the gravitational force to the centripetal force:
+
+GMm/r^2 =(mv^2)/r
+Where:
+
+
+	G is the gravitational constant
+
+	M is the mass of the Earth
+
+	m is the mass of the satellite
+
+	r is the orbital radius from the center of Earth (r=R_E+h)
+
+	v is the orbital speed
+
+Canceling the satellite mass m and solving for the orbital velocity v:
+
+v=√(GM/r)
+The orbital period T is the time required to complete one full circumference (2πr) at speed v:
+
+T=2πr/v=2πr/√(GM/r)
+Simplifying this expression yields Kepler's Third Law for circular orbits:
+
+T=2π√(r^3/GM)
+2. Parameter Substitution & Evaluation
+Using standard Earth parameters:
+
+
+	Mean Earth radius (R_E): 6,371" km"=6.371×10^6 " m" 
+
+	Altitude (h): 550" km"=5.5×10^5 " m" 
+
+	Standard gravitational parameter (μ=GM): 3.986×10^14 〖" m" 〗^3/"s" ^2
+
+First, calculate the total orbital radius r:
+
+r=R_E+h=6,371" km"+550" km"=6,921" km"=6.921×10^6 " m" 
+Next, substitute r and μ into the period formula:
+
+T=2π√((6.921×10^6 " m" )^3/(3.986×10^14 〖" m" 〗^3/"s" ^2 ))
+T≈5,730.1" seconds" 
+Converting seconds into minutes:
+
+T_"minutes" =5,730.1" s" /60" s/min" ≈95.5" minutes" 
+(Note: If using the WGS84 equatorial radius of 6,378.1" km" , the orbital period evaluates to approximately 95.6 minutes).
+
