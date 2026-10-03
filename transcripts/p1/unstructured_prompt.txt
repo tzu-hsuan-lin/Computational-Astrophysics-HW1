@@ -1,0 +1,2 @@
+Prompt: 
+Derive the orbital period of a circular orbit at altitude 550 km above Earth’s surface from Newtonian gravity, and evaluate it in minutes.
