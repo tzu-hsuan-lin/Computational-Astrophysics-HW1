@@ -6,16 +6,41 @@ Prompt:
 Derive the orbital period of a circular orbit at altitude 550 km above Earth’s surface from Newtonian gravity, and evaluate it in minutes.
 
 Response:
+Python
+import numpy as np
+
+# Constants
+G = 6.67430e-11 # m^3 kg^-1 s^-2
+M_earth = 5.9722e24 # kg
+mu = G * M_earth # standard gravitational parameter
+R_earth = 6371.0e3 # meters
+altitude = 550.0e3 # meters
+r = R_earth + altitude # orbital radius in meters
+
+# Period formula: T = 2 * pi * sqrt(r^3 / mu)
+T_seconds = 2 * np.pi * np.sqrt(r**3 / mu)
+T_minutes = T_seconds / 60.0
+
+print(f"Orbital radius: {r/1000} km")
+print(f"Orbital period: {T_seconds:.2f} seconds")
+print(f"Orbital period: {T_minutes:.2f} minutes")
+
+程式碼輸出內容
+Orbital radius: 6921.0 km
+Orbital period: 5730.11 seconds
+Orbital period: 95.50 minutes
+
 To find the orbital period of a satellite in a circular orbit at an altitude of 550" km" , we can derive the formula using fundamental Newtonian mechanics and universal gravitation.
+
 ## Derivation from Newtonian Gravity
 1. Force Balance
 For a satellite of mass min a circular orbit of radius raround Earth (mass M), the gravitational force supplied by Earth acts as the centripetal force keeping it in orbit:
 GMm/r^2 =(mv^2)/r
 where:
-	Gis the gravitational constant (6.6743×10^(-11) 〖" m" 〗^3 〖" kg" 〗^(-1) 〖" s" 〗^(-2))
-	Mis the mass of the Earth
-	ris the distance from the center of Earth to the satellite
-	vis the orbital velocity
+	G is the gravitational constant (6.6743×10^(-11) 〖" m" 〗^3 〖" kg" 〗^(-1) 〖" s" 〗^(-2))
+	M is the mass of the Earth
+	r is the distance from the center of Earth to the satellite
+	v is the orbital velocity
 2. Solving for Orbital Velocity (v)
 Canceling the satellite mass mand one factor of rfrom both sides gives:
  
@@ -27,6 +52,7 @@ Substitute the expression for vinto the period equation:
   
 T=2πr√(r/GM)=2π√(r^3/GM)
 (Note: GM is often written as the standard gravitational parameter, μ≈3.986×10^14 〖" m" 〗^3/"s" ^2.)
+
 ## Numerical Evaluation
 We plug in the known physical values for Earth and the given altitude:
 	Earth's Mean Radius (R_E): 6,371" km" 
@@ -39,6 +65,7 @@ T=2π√((6.921×10^6 )^3/(3.986×10^14 ))
 T≈5,730.11" seconds" 
 Converting seconds to minutes:
 T=5,730.11/60≈95.50" minutes" 
+
 ## Practical Context
 An orbital period of roughly 95.5 minutes (or about 1.59" hours" ) is a classic characteristic of Low Earth Orbit (LEO) satellites. For example, a 550" km" altitude is famously utilized by SpaceX's Starlink constellation because it provides a good balance: it is high enough to avoid rapid orbital decay from atmospheric drag, yet low enough to ensure low latency and strong signal transmission back to Earth.
 
