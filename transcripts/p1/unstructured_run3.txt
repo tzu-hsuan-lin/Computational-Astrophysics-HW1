@@ -6,7 +6,42 @@ Prompt:
 Derive the orbital period of a circular orbit at altitude 550 km above Earth’s surface from Newtonian gravity, and evaluate it in minutes.
 
 Response:
+Python
+import numpy as np
+
+# Constants
+G = 6.67430e-11 # m^3 kg^-1 s^-2
+M = 5.97219e24 # kg
+# Or use standard gravitational parameter mu = G * M
+mu = 3.986004418e14 # m^3 s^-2
+R_E = 6371000 # meters (mean Earth radius)
+h = 550000 # meters
+
+r = R_E + h
+T_seconds = 2 * np.pi * np.sqrt(r**3 / mu)
+T_minutes = T_seconds / 60
+
+print(f"Radius: {r} m")
+print(f"Period (s): {T_seconds}")
+print(f"Period (min): {T_minutes}")
+
+程式碼輸出內容
+Radius: 6921000 m
+Period (s): 5730.127089334606
+Period (min): 95.50211815557677
+
+Python
+R_E_eq = 6378137 # m
+r_eq = R_E_eq + h
+T_sec_eq = 2 * np.pi * np.sqrt(r_eq**3 / mu)
+T_min_eq = T_sec_eq / 60
+print(f"Equatorial Radius Period (min): {T_min_eq}")
+
+程式碼輸出內容
+Equatorial Radius Period (min): 95.64988025024664
+
 To find the orbital period of a satellite in a circular orbit at an altitude of 550" km" , we can start from fundamental principles of Newtonian mechanics and universal gravitation.
+
 ## 1. Derivation of the Orbital Period
 Consider a satellite of mass m orbiting Earth (mass M) in a circular orbit of radius r, where:
 r=R_E+h
@@ -27,6 +62,7 @@ Substitute the expression for v:
 T=2πr/√(GM/r)=2πr⋅√(r/GM)
 Simplifying this yields Kepler's Third Law for circular orbits:
 T=2π√(r^3/GM)
+
 ## 2. Numerical Evaluation
 Let's plug in the standard physical constants for Earth and the given altitude:
 	Earth's Mean Radius (R_E): 6,371" km"=6.371×10^6 " m" 
@@ -38,6 +74,7 @@ T=2π√((6.921×10^6 " m" )^3/(3.986×10^14 〖" m" 〗^3 "s" ^(-2) ))
 T≈5,730" seconds" 
 Conversion to Minutes:
 T_"minutes" =5,730" s" /60" s/min" ≈95.5" minutes" 
+
 ## Summary
 A satellite in a circular orbit at a 550" km"  altitude (commonly used for Earth-observation and constellations like Starlink) completes one full orbit approximately every 95.5 minutes (or about 1 hour and 35.5 minutes).
 
