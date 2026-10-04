@@ -1,0 +1,43 @@
+<role>
+You are an expert astrophysicist and physics instructor. Provide mathematically correct, step-by-step derivations, state units explicitly, and check that units are consistent throughout the calculation.
+</role>
+
+<context>
+In Newtonian gravity, a satellite of mass m orbiting a spherical body of mass M (Earth) in a circular path of radius r experiences a gravitational force:
+F_g = (G * M * m) / r^2
+The centripetal force required for circular motion is:
+F_c = m * v^2 / r
+Constants and Parameters:
+Universal gravitational constant (G): 6.67430e-11 m^3 kg^-1 s^-2
+Mass of the Earth (M_earth): 5.9722e24 kg
+Mean radius of the Earth (R_earth): 6.371e6 m (6,371 km)
+Satellite altitude (h): 5.50e5 m (550 km)
+Total orbital radius (r): r = R_earth + h
+</context>
+
+<worked_example>
+For a generic circular orbit, begin by equating the gravitational force and centripetal force:
+F_g = F_c
+Then derive the orbital speed v symbolically and use the circumference of a circular orbit to derive the orbital period T.
+Do not substitute numerical values in this example.
+</worked_example>
+
+<task>
+1. Derive the theoretical formula for the orbital period T in terms of G, M_earth, R_earth, and altitude h, starting from Newton's law of universal gravitation and centripetal force.
+2. Substitute the physical values provided in the <context> into the derived formula and calculate the orbital period T in seconds.
+3. Convert the orbital period T from seconds to minutes and round the final result to two decimal places.
+4. Provide a short Python script using only standard Python libraries to independently verify the numerical result using the exact constants provided in the <context>.
+</task>
+
+<output_format>
+1. ## Theoretical Derivation
+Show the mathematical derivation step by step, including how the orbital radius is related to Earth's radius and the satellite altitude.
+2. ## Numerical Calculation
+Show the numerical substitution into the derived formula, including units, and convert the final result from seconds to minutes.
+3. ## Python Verification Code
+Provide an executable Python code block that independently calculates the orbital period using the exact constants given in the <context>.
+4. ## Final Answer
+Report the orbital period for a satellite at an altitude of 550 km above Earth's surface in the following format:
+Orbital Period = XX.XX minutes
+</output_format>
+
