@@ -6,6 +6,38 @@ Prompt:
 Derive the orbital period of a circular orbit at altitude 550 km above Earth’s surface from Newtonian gravity, and evaluate it in minutes.
 
 Response:
+Python
+import numpy as np
+
+# Constants
+G = 6.67430e-11 # m^3 kg^-1 s^-2
+M_E = 5.9722e24 # kg
+mu = G * M_E # standard gravitational parameter, approx 3.986e14
+R_E = 6371.0 * 1000 # meters (mean Earth radius)
+h = 550.0 * 1000 # meters
+
+r = R_E + h
+T_seconds = 2 * np.pi * np.sqrt(r**3 / mu)
+T_minutes = T_seconds / 60
+
+print(f"Orbital radius: {r/1000} km")
+print(f"Period (seconds): {T_seconds}")
+print(f"Period (minutes): {T_minutes}")
+
+程式碼輸出內容
+Orbital radius: 6921.0 km
+Period (seconds): 5730.111974871216
+Period (minutes): 95.5018662478536
+
+Python
+R_E_wgs84 = 6378137.0 # meters
+r_wgs84 = R_E_wgs84 + h
+T_wgs84_min = (2 * np.pi * np.sqrt(r_wgs84**3 / mu)) / 60
+print(f"Period with WGS84 radius (minutes): {T_wgs84_min}")
+
+程式碼輸出內容
+Period with WGS84 radius (minutes): 95.64962795276863
+
 To find the orbital period of a satellite in a circular orbit at an altitude of 550 km, we start from Newton's law of universal gravitation and Newton's second law of motion.
 
 
@@ -37,6 +69,7 @@ T=2πr/v=2πr/√(GM/r)
 Simplifying this expression yields Kepler's Third Law for circular orbits:
 
 T=2π√(r^3/GM)
+
 2. Parameter Substitution & Evaluation
 Using standard Earth parameters:
 
