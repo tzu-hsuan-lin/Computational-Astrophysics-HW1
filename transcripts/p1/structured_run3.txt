@@ -1,0 +1,70 @@
+Prompt Type: Structured (Run 3)
+Model: Gemini 3.5 Flash-Lite
+Date: 2026/10/4
+
+Response:
+Theoretical Derivation
+To determine the theoretical formula for the orbital period T of a satellite orbiting Earth, we start by balancing the forces acting on the satellite in uniform circular motion.
+	Equate Gravitational and Centripetal Forces:
+The gravitational force F_g exerted by the Earth on the satellite provides the necessary centripetal force F_c to keep it in a circular orbit of radius r:
+F_g=F_c
+(GM_"earth"  m)/r^2 =(mv^2)/r
+	Solve for Orbital Speed (v):
+Mass of the satellite (m) cancels out from both sides:
+(GM_"earth" )/r^2 =v^2/r
+v=√((GM_"earth" )/r)
+	Relate Orbital Radius to Altitude:
+The total orbital radius r is the sum of the Earth's mean radius R_"earth"  and the satellite's altitude h:
+r=R_"earth" +h
+	Derive the Orbital Period (T):
+The orbital period T is the time taken to complete one full circular orbit of circumference C=2πr at speed v:
+T=C/v=2πr/v
+Substituting our expression for v:
+T=2πr/√((GM_"earth" )/r)=2πr√(r/(GM_"earth"  ))=2π√(r^3/(GM_"earth"  ))
+Finally, substituting r=R_"earth" +h:
+T=2π√((R_"earth" +h)^3/(GM_"earth"  ))
+
+Numerical Calculation
+Now we substitute the physical values provided into our derived formula:
+	Universal gravitational constant (G): 6.67430×10^(-11) 〖" m" 〗^3 〖" kg" 〗^(-1) 〖" s" 〗^(-2)
+	Mass of the Earth (M_"earth" ): 5.9722×10^24 " kg" 
+	Mean radius of the Earth (R_"earth" ): 6.371×10^6 " m" 
+	Satellite altitude (h): 5.50×10^5 " m" 
+	Calculate Total Orbital Radius (r):
+r=6.371×10^6 " m"+5.50×10^5 " m"=6.921×10^6 " m" 
+	Evaluate the Cube of the Radius (r^3):
+r^3=(6.921×10^6 " m" )^3≈3.3159×10^20 〖" m" 〗^3
+	Evaluate the Denominator (GM_"earth" ):
+GM_"earth" =(6.67430×10^(-11) 〖" m" 〗^3 〖" kg" 〗^(-1) 〖" s" 〗^(-2) )×(5.9722×10^24 " kg" )
+GM_"earth" ≈3.9860×10^14 〖" m" 〗^3 〖" s" 〗^(-2)
+	Calculate Orbital Period in Seconds (T_"sec" ):
+T=2π√((3.3159×10^20 〖" m" 〗^3)/(3.9860×10^14 〖" m" 〗^3 〖" s" 〗^(-2) ))
+T=2π√(831,886〖" s" 〗^2 )=2π×912.078" s"≈5,730.75" s" 
+	Convert to Minutes:
+T_"min" =5,730.75" s" /60" s/min" ≈95.5125" minutes" 
+Rounding to two decimal places gives 95.51 minutes.
+
+Python Verification Code
+Python
+import math
+
+# Constants and Parameters
+G = 6.67430e-11  # m^3 kg^-1 s^-2
+M_earth = 5.9722e24  # kg
+R_earth = 6.371e6  # m
+h = 5.50e5  # m
+
+# Total orbital radius
+r = R_earth + h
+
+# Calculate orbital period in seconds
+T_seconds = 2 * math.pi * math.sqrt((r**3) / (G * M_earth))
+
+# Convert to minutes
+T_minutes = T_seconds / 60
+
+print(f"Orbital Period = {T_minutes:.2f} minutes")
+
+Final Answer
+Orbital Period = 95.51 minutes
+
