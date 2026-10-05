@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Tzu-Hsuan Lin", email = "qtp010629@gapp.nthu.edu.tw" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "numpy>=2.2.6",
 ]
