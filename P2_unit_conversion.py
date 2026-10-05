@@ -4,9 +4,9 @@ import numpy as np
 F = 3.5e-13   # erg s^-1 cm^-2 Hz^-1 
 CGS_to_Jy = 1e23    # 1 Jy = 10^-23 erg s^-1 cm^-2 Hz^-1
 
-f_Jy = F * CGS_to_Jy    # flux in Jy
+f_Jy = F * CGS_to_Jy    # flux density in Jy
 m_AB = -2.5 * np.log10(f_Jy / 3631)  # AB magnitude
-print(f'Flux = {f_Jy:.2e} Jy')
+print(f'Flux density = {f_Jy:.2e} Jy')
 print(f'AB magnitude = {m_AB:.2f}')
 
 # Convert flux from m_AB
