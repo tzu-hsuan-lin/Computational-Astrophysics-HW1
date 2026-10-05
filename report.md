@@ -41,7 +41,54 @@ Providing fixed values of constants and parameters in <context> (G, M_earth, R_e
 
 ---
 
-## Problem 2 — Hallucination hunt
+## Problem 2 — Hallucination hunt (Astrophysical Unit Conversion)
+
+LLM Model: GPT-5.6 Luna
+
+### 1. The Failure Mode
+
+In the baseline prompt, GPT-5.6 Luna was asked to convert the flux density F = 3.5 × 10⁻¹³ erg s⁻¹ cm⁻² Hz⁻¹ at 1 keV into Jansky, AB magnitude, then photon flux (N_E) in photon cm⁻² s⁻¹ keV⁻¹. 
+While the model correctly calculated the flux density in Jansky (3.5 × 10¹⁰ Jy) and AB magnitude (-17.46), it exhibited a unit conversion hallucination when evaluating the photon flux. The model showed N_E = 3.5 × 10⁻¹³ / (6.626 × 10⁻²⁷ × 1.602 × 10⁻⁹) ≈ 3.30 × 10²² photons cm⁻² s⁻¹ keV⁻¹.
+It incorrectly converted the unit of the photon energy from keV to erg by inserting an additional keV-to-erg conversion factor (1.602 × 10⁻⁹ erg/keV) in the denominator, leading to a wrong result.
+
+### 2. Verification
+
+A Python script (P2_unit_conversion.py) was written to verify all conversions of units step by step, following a sequential calculation: Flux Density (F_nu) -> Jansky (F_Jy) -> AB Magnitude (m_AB) -> Photon Flux Density (N_E).
+
+1. Flux Density to Jansky:
+    F_nu = 3.5 × 10⁻¹³ erg s⁻¹ cm⁻² Hz⁻¹
+    1 Jy = 10⁻²³ erg s⁻¹ cm⁻² Hz⁻¹ 
+    F_Jy = F_nu × 10²³ = 3.50 × 10¹⁰ Jy 
+
+2. Jansky to AB Magnitude:
+    m_AB = -2.5 × log10(F_Jy / 3631 Jy) ≈ -17.46 
+
+3. AB Magnitude to Photon Flux (N_E): 
+    Convert m_AB back to CGS flux density (F_CGS): 
+	F_AB_to_Jy = 3631 × 10^(-0.4m_AB) Jy 
+	F_CGS = F_AB_to_Jy / 10²³ erg s⁻¹ cm⁻² Hz⁻¹ 
+    Bandwidth & Energy Conversion: 
+	1 keV = 1.602 × 10⁻⁹ erg 
+	Photon energy is h × nu = E_keV × (1.602 × 10⁻⁹ erg/keV) 
+	Differentiating gives d_nu / dE_keV = (1.602 × 10⁻⁹) / h 
+	Energy flux per keV: F_E = F_CGS × (1.602 × 10⁻⁹) / h (erg s⁻¹ cm⁻² keV⁻¹) 
+    Photon Count Conversion: 
+	N_E = F_E / (Energy per photon) = F_CGS / (h × E_keV) ≈ 5.28 × 10¹³ photons cm⁻² s⁻¹ keV⁻¹ 
+
+The execution of P2_unit_conversion.py confirmed these outputs:
+* Flux density = 3.50e+10 Jy
+* AB magnitude = -17.46
+* Photon flux = 5.28e+13 photon cm^-2 s^-1 keV^-1
+
+### 3. Mitigation Results
+
+A new prompt asked a fresh conversation of the LLM model to restate all constants, double-check the unit conversion, and say "I don't know" if it was not sure. With these rules, the model made a correct calculation and got the correct answer of 5.28 × 10¹³ photons cm⁻² s⁻¹ keV⁻¹.
+
+### 4. Why This Failure Happens
+
+This failure happens because LLMs generate text step-by-step without an internal calculator. In the baseline prompt, the model tried to output the final answer directly, essentially guessing some words based on what it had memorized or seen during training without checking if the units actually matched.
+
+By requiring the model to show intermediate steps and check units, the prompt forced it to break down the formula. Writing out the full equation and units step-by-step provided the critical context needed for the LLMs to predict the next token. This demonstrates that prompting for explicit reasoning helps the model use its own intermediate steps to avoid errors and reach physically accurate conversions.
 
 ---
 
