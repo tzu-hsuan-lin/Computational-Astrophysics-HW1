@@ -23,7 +23,7 @@ $$
 \mathrm{erg\,s^{-1}\,cm^{-2}\,Hz^{-1}},
 $$
 
- we get  LAMBDA
+ we get 
 
  $$
 F_\nu=\frac{3.5\times10^{-13}}{10^{-23}}
