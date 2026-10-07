@@ -94,6 +94,44 @@ By requiring the model to show intermediate steps and check units, the prompt fo
 
 ## Problem 3 — Agent-assisted mini-tool with tests and clean git history
 
+### 1. Specification Given to the AI Agent
+Before writing any implementation code, SPEC.md was created in the repository root to define the requirements for solving Kepler's equation, including the API signature, valid input ranges, error handling, and acceptance tests so that both the developer and the AI agent have a clear, unambiguous benchmark for implementation and verification.
+
+We specified the function signature solve_kepler(M, e) requiring:
+
+- Vectorized input support for floats and NumPy arrays, keeping the original shape without Python loops.
+- Eccentricity e must be between 0 and 0.99(raising a `ValueError` otherwise) and sporting any real M.
+- Odd symmetry (solve_kepler(-M, e) = -solve_kepler(M, e))and residual error strictly under 10^-10.
+
+To test these rules, `SPEC.md` listed 8 acceptance tests:
+1. e = 0 identity: Check that solve_kepler(M, 0) = M.
+2. Residual check: Error < 10^-10} for 1000 random (M, e) pairs with e in [0, 0.99].
+3. Odd symmetry: Check that solve_kepler(-M, e) = -solve_kepler(M, e).
+4. Out of bounds M: Work correctly when M is outside [0, 2pi).
+5. Array support: Work on NumPy arrays and keep the input shape.
+6. Error handling: Raise ValueError when e < 0 or e > 0.99.
+7. Single float support: Work on single float inputs and outputs.
+8. High eccentricity: Work correctly near e = 0.99.
+
+### 2. First-Pass Agent Performance (Right vs. Wrong)
+AI agent was asked to follow the SPEC.md and write tests/test_kepler.py, then and run pytest before implementing src/hw1/kepler.py.
+
+What the Agent Got Right:
+- The agent created /tests/test_kepler.py covering all 8 required acceptance test cases.
+- When running pytest before creating kepler.py, it correctly captured the expected failure (ModuleNotFoundError: No module named 'hw1.kepler'), validating our test-first approach.
+- For the solver implementation, the agent automatically adopted Danby's initial guess paired with 3rd-order Halley's method (a higher-order Newton method) and a vectorized bisection safeguard, guaranteeing fast cubic convergence.
+
+Issues in the First Run:
+The initial pytest failure was purely due to the missing module (ModuleNotFoundError) of /src/hw1/kepler.py as designed in test-first development. No other errors or bugs were found in the generated implementation.
+
+### 3. Code Review (Diff-Level Review) and Verification
+I reviewed the generated kepler.py and checked whether it follows the requirements mentioned in SPEC.md.
+
+- Domain Reduction & Symmetry: Verified that range reduction and odd symmetry are handled before running the numerical iterations.
+- Robustness: Verified that a vectorized bisection fallback is present.
+- Final Execution: Executing `uv run pytest` passed all 8 unit tests with zero failures, satisfying all quantitative tolerance requirements defined in SPEC.md.
+
 ---
+
 
 ## Problem 4 — AI usage log
