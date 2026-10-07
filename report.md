@@ -94,6 +94,8 @@ By requiring the model to show intermediate steps and check units, the prompt fo
 
 ## Problem 3 — Agent-assisted mini-tool with tests and clean git history
 
+AI Agent: Antigravity CLI
+
 ### 1. Specification Given to the AI Agent
 Before writing any implementation code, SPEC.md was created in the repository root to define the requirements for solving Kepler's equation, including the API signature, valid input ranges, error handling, and acceptance tests so that both the developer and the AI agent have a clear, unambiguous benchmark for implementation and verification.
 
@@ -133,5 +135,6 @@ I reviewed the generated kepler.py and checked whether it follows the requiremen
 
 ---
 
-
 ## Problem 4 — AI usage log
+
+In the future, I would gladly let AI agents handle setup tasks like writing unit test suites, drafting standard math algorithms, and checking grammar in documentation. However, I would not fully trust AI agents to write project specifications, design system rules, or perform final code reviews. Human judgment is necessary to set clear boundaries, compare solutions, and check every line of code to make sure all the constraints are fulfilled and both the math and logic are completely correct.
